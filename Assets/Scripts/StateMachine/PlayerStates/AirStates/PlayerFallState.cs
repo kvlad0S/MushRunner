@@ -13,11 +13,14 @@ public class PlayerFallState : State {
     protected Vector2 inputDir => player.inputHandler.GetInputDirection();
 
     public override void Enter() {
-        IsOnFall = true;
-        if (inputDir.y > 0) {
-            Set(fastFallGroundState, true);
+        if (player.justFalled) {
+            IsOnFall = true;
+        }
+        
+        if (Mathf.Abs(inputDir.y) > 0) {
+            Set(fastFallGroundState);
         } else {
-            Set(fallGroundState, true);
+            Set(fallGroundState);
         }
         
     }

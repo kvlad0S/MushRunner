@@ -13,7 +13,7 @@ public class Player : Core {
     [SerializeField] private PlayerFallState fallState;
     [SerializeField] public InputHandler inputHandler;
     [SerializeField] public FallDetector fallDetector;
-    private bool justFalled => fallDetector.justFalled;
+    public bool justFalled => fallDetector.justFalled;
 
     Vector2 inputDir => inputHandler.GetInputDirection();
 
@@ -56,8 +56,6 @@ public class Player : Core {
 
 
     private void HandleFacingDirection() {
-        Vector2 inputDir = inputHandler.GetInputDirection();
-
         if (inputDir.x > 0 && !IsLookingRight) {
             IsLookingRight = true;
         } else if (inputDir.x < 0 && IsLookingRight) {
@@ -73,18 +71,14 @@ public class Player : Core {
             machine.Set(groundState);
         } else if (!fallState.IsOnFall && !justFalled) {
             machine.Set(airState);
-        } else if (justFalled || fallState.IsOnFall) {
-            if (justFalled) {
-                machine.Set(fallState, true);
-                Debug.Log(justFalled);
-            } else {
-                machine.Set(fallState);
-            }
-            
+        } else if (justFalled) {
+            machine.Set(fallState, true);
         }
+        
     }
+}
 
     
 
-}
+
 
