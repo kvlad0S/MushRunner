@@ -10,10 +10,7 @@ public class Player : Core {
     
     [SerializeField] private PlayerAirState airState;
     [SerializeField] private PlayerGroundState groundState;
-    [SerializeField] private PlayerFallState fallState;
     [SerializeField] public InputHandler inputHandler;
-    [SerializeField] public FallDetector fallDetector;
-    public bool justFalled => fallDetector.justFalled;
 
     Vector2 inputDir => inputHandler.GetInputDirection();
 
@@ -67,14 +64,11 @@ public class Player : Core {
 
     private void SelectState() {
 
-        if(groundSensor.isGrounded && !fallState.IsOnFall && !justFalled) {
+        if(groundSensor.isGrounded) {
             machine.Set(groundState);
-        } else if (!fallState.IsOnFall && !justFalled) {
+        } else {
             machine.Set(airState);
-        } else if (justFalled) {
-            machine.Set(fallState, true);
         }
-        
     }
 }
 

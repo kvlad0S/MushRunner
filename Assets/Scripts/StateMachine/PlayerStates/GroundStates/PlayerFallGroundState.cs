@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFallGroundState : State {
 
-
+    public event EventHandler OnFallGroundEnd;
     [SerializeField] private float fallTimerMax = .25f;
     private float fallTimer;
 
@@ -20,8 +21,7 @@ public class PlayerFallGroundState : State {
         if (fallTimer <= 0f) {
             isComplete = true;
             Debug.Log("fallState");
+            OnFallGroundEnd?.Invoke(this, EventArgs.Empty);
         }
     }
-
-
 }

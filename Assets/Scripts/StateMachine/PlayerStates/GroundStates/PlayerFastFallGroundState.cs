@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFastFallGroundState : State {
 
+    public event EventHandler OnFastFallGroundEnd;
     [SerializeField] private float fastFallTimerMax = .1f;
     private float fastFallTimer;
 
@@ -18,6 +20,7 @@ public class PlayerFastFallGroundState : State {
         if (fastFallTimer <= 0f) {
             isComplete = true;
             Debug.Log("fastFallState");
+            OnFastFallGroundEnd?.Invoke(this, EventArgs.Empty);
         }
     }
 }

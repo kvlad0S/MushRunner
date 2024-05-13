@@ -123,56 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 7400000, guid: 80eecceebe3950748b85fcd07c01681d, type: 2}
---- !u!1 &573831697884944580
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7512154725958406590}
-  - component: {fileID: 3945373236411150148}
-  m_Layer: 6
-  m_Name: FallState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7512154725958406590
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573831697884944580}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8694603804381298946}
-  - {fileID: 7150404299710347231}
-  m_Father: {fileID: 7333516779201892242}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3945373236411150148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573831697884944580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9399ed33855a44db1d588cd1cb9a88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  fallGroundState: {fileID: 9188169732545552472}
-  fastFallGroundState: {fileID: 6770009827765509520}
-  player: {fileID: 2387539238490224438}
 --- !u!1 &1492022963270619648
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 7400000, guid: ee45212bdac73994b95edcd81320b689, type: 2}
   fallingAnimEndSpeed: 6
---- !u!1 &3086922950604948818
+--- !u!1 &2055920680425977517
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,75 +244,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8437077329820118231}
-  - component: {fileID: 1482173501763711124}
+  - component: {fileID: 3942969983137737219}
+  - component: {fileID: 5206360876683523625}
   m_Layer: 6
-  m_Name: FallDetector
+  m_Name: FastFallGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8437077329820118231
+--- !u!4 &3942969983137737219
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3086922950604948818}
+  m_GameObject: {fileID: 2055920680425977517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.183, y: -1.467, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7250302688786301678}
+  m_Father: {fileID: 4006579205634348054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1482173501763711124
-BoxCollider2D:
+--- !u!114 &5206360876683523625
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3086922950604948818}
+  m_GameObject: {fileID: 2055920680425977517}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.12565541, y: -0.19444895}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.025758266, y: 0.00918293}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20158164149b9eb4c8958cebbacc5ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 7400000, guid: 92e689a682c09ba4595ced35657abfe3, type: 2}
+  fastFallTimerMax: 0.1
 --- !u!1 &3704903895154256361
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +360,8 @@ Transform:
   m_Children:
   - {fileID: 4997031369364580600}
   - {fileID: 7330046336150552391}
+  - {fileID: 7499330381385502535}
+  - {fileID: 3942969983137737219}
   m_Father: {fileID: 8424894886102648180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7971579862546804739
@@ -458,9 +379,11 @@ MonoBehaviour:
   anim: {fileID: 0}
   run: {fileID: 4325114834202849834}
   idle: {fileID: 8429994608807343013}
+  fallGround: {fileID: 2016163497022211149}
+  fastFallGround: {fileID: 5206360876683523625}
   player: {fileID: 2387539238490224438}
   jumpSpeed: 20
---- !u!1 &5187635226044435846
+--- !u!1 &6599313535787214434
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -468,44 +391,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7150404299710347231}
-  - component: {fileID: 9188169732545552472}
+  - component: {fileID: 7499330381385502535}
+  - component: {fileID: 2016163497022211149}
   m_Layer: 6
-  m_Name: FallGroundState
+  m_Name: FallGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7150404299710347231
+--- !u!4 &7499330381385502535
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5187635226044435846}
+  m_GameObject: {fileID: 6599313535787214434}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7512154725958406590}
+  m_Father: {fileID: 4006579205634348054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9188169732545552472
+--- !u!114 &2016163497022211149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5187635226044435846}
+  m_GameObject: {fileID: 6599313535787214434}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b539998d31305014aa75cc3c2efd4127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 7400000, guid: 7afff3cd517c96e4ab2fbffde7efd69f, type: 2}
-  fallTimerMax: 0.25
+  fallTimerMax: 0.3
 --- !u!1 &6818732112718894925
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +522,6 @@ GameObject:
   - component: {fileID: 2102986742184756540}
   - component: {fileID: 5229927448006239987}
   - component: {fileID: 968440240074704717}
-  - component: {fileID: 8951169814020479761}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -622,7 +544,6 @@ Transform:
   m_Children:
   - {fileID: 8761642794450303358}
   - {fileID: 6074836015013263420}
-  - {fileID: 8437077329820118231}
   - {fileID: 8424894886102648180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -643,9 +564,7 @@ MonoBehaviour:
   groundSensor: {fileID: 968440240074704717}
   airState: {fileID: 929686477072140550}
   groundState: {fileID: 7971579862546804739}
-  fallState: {fileID: 3945373236411150148}
   inputHandler: {fileID: 7972604029727790489}
-  fallDetector: {fileID: 8951169814020479761}
 --- !u!114 &7972604029727790489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,68 +783,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &8951169814020479761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7547967237917347700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d54411e6509d5b4b862399330875b84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallDetector: {fileID: 1482173501763711124}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!1 &8295707318435599742
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8694603804381298946}
-  - component: {fileID: 6770009827765509520}
-  m_Layer: 6
-  m_Name: FastFallGroundState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8694603804381298946
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8295707318435599742}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7512154725958406590}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6770009827765509520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8295707318435599742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20158164149b9eb4c8958cebbacc5ac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 7400000, guid: 92e689a682c09ba4595ced35657abfe3, type: 2}
-  fastFallTimerMax: 0.1
 --- !u!1 &8597361832323932137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +958,6 @@ Transform:
   - {fileID: 9207576527223204316}
   - {fileID: 7233704816055260226}
   - {fileID: 2307027104196804461}
-  - {fileID: 7512154725958406590}
   m_Father: {fileID: 8424894886102648180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &929686477072140550
