@@ -13,7 +13,9 @@ public class PlayerAirState : State {
     [SerializeField] private State jump;
     [SerializeField] private State startFalling;
     [SerializeField] private State falling;
-    protected Vector2 inputDir => player.inputHandler.GetInputDirection();
+    [SerializeField] private State onWall;
+    private Vector2 inputDir => player.inputHandler.GetInputDirection();
+    private bool isOnWall => player.wallDetector.isOnWall;
     [SerializeField] private float fallingAnimEndSpeed = 6f;
 
     public override void Enter() {
@@ -30,17 +32,18 @@ public class PlayerAirState : State {
         } else {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y);
         }
-
-        if (body.velocity.y > 0) {
-            Set(jump);
-        } else if (body.velocity.y <= 0f && body.velocity.y > -fallingAnimEndSpeed) {
-            Set(startFalling);
-        } else if (body.velocity.y <= -fallingAnimEndSpeed) {
-            Set(falling);
+        if (!isOnWall) {
+            if (body.velocity.y > 0) {
+                Set(jump);
+            } else if (body.velocity.y <= 0f && body.velocity.y > -fallingAnimEndSpeed) {
+                Set(startFalling);
+            } else if (body.velocity.y <= -fallingAnimEndSpeed) {
+                Set(falling);
+            }
+        } else {
+            Set(onWall);
         }
-        if (body.velocity.y < 0 && isGrounded) {
-            Debug.Log("Fall");
-        }
+        
         
 
         

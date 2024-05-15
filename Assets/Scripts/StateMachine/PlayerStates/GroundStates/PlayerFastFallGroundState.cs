@@ -19,7 +19,6 @@ public class PlayerFastFallGroundState : State {
         fastFallTimer -= Time.deltaTime;
         if (fastFallTimer <= 0f) {
             isComplete = true;
-            Debug.Log("fastFallState");
             OnFastFallGroundEnd?.Invoke(this, EventArgs.Empty);
         }
     }

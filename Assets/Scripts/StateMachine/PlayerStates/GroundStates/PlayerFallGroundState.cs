@@ -20,7 +20,6 @@ public class PlayerFallGroundState : State {
         fallTimer -= Time.deltaTime;
         if (fallTimer <= 0f) {
             isComplete = true;
-            Debug.Log("fallState");
             OnFallGroundEnd?.Invoke(this, EventArgs.Empty);
         }
     }

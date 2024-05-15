@@ -12,6 +12,8 @@ public class Player : Core {
     [SerializeField] private PlayerGroundState groundState;
     [SerializeField] public InputHandler inputHandler;
 
+    [SerializeField] public WallDetector wallDetector;
+
     Vector2 inputDir => inputHandler.GetInputDirection();
 
 
@@ -53,11 +55,23 @@ public class Player : Core {
 
 
     private void HandleFacingDirection() {
-        if (inputDir.x > 0 && !IsLookingRight) {
-            IsLookingRight = true;
-        } else if (inputDir.x < 0 && IsLookingRight) {
-            IsLookingRight = false;
+
+        if (wallDetector.isOnWall && !groundSensor.isGrounded) {
+            if (wallDetector.IsWallDirectionRight() && !IsLookingRight) {
+                IsLookingRight = true;
+                Debug.Log(wallDetector.IsWallDirectionRight());
+            } else if (wallDetector.IsWallDirectionRight() && IsLookingRight) {
+                IsLookingRight = false;
+                Debug.Log(wallDetector.IsWallDirectionRight());
+            }
+        } else {
+            if (inputDir.x > 0 && !IsLookingRight) {
+                IsLookingRight = true;
+            } else if (inputDir.x < 0 && IsLookingRight) {
+                IsLookingRight = false;
+            }
         }
+        
     }
 
  
