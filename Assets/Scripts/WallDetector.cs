@@ -20,7 +20,7 @@ public class WallDetector : MonoBehaviour {
     }
 
     public bool IsWallDirectionRight() {
-        return Physics2D.OverlapAreaAll(rightCollider.bounds.min, rightCollider.bounds.max, groundMask).Length > 0;
+        return Physics2D.OverlapAreaAll(leftCollider.bounds.min, leftCollider.bounds.max, groundMask).Length > 0;
     }
 
 

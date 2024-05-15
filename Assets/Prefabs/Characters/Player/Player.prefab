@@ -170,6 +170,10 @@ MonoBehaviour:
   anim: {fileID: 7400000, guid: 75f671968de19304f8325d3f9fea9fdb, type: 2}
   idle: {fileID: 7400000, guid: 41cb85c6539823b2badf1648a76e79f2, type: 2}
   idleTimerMax: 1
+  player: {fileID: 2387539238490224438}
+  jumpSpeed: 20
+  moveSpeed: 9
+  wallDownSpeed: 10
 --- !u!1 &1492022963270619648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,7 +1124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16819191, y: -0.026045322}
+  m_Offset: {x: -0.2497139, y: -0.026045322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1131,7 +1135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.06135559, y: 1.3470869}
+  m_Size: {x: 0.22439957, y: 1.3470869}
   m_EdgeRadius: 0
 --- !u!1 &9020119381469850705
 GameObject:
@@ -1228,7 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 9
   downSpeedScale: 1.1
   upSpeedScale: 0.95
   maxFallingSpeed: 15

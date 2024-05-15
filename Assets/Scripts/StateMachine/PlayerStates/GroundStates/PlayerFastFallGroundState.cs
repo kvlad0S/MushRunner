@@ -11,7 +11,6 @@ public class PlayerFastFallGroundState : State {
 
     public override void Enter() {
         animator.Play(anim.name);
-        body.velocity = Vector3.zero;
         fastFallTimer = fastFallTimerMax;
     }
 

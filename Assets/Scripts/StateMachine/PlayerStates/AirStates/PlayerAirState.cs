@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAirState : State {
 
 
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 9f;
     [SerializeField] private float downSpeedScale = 1.1f;
     [SerializeField] private float upSpeedScale = 0.96f;
     [SerializeField] private float maxFallingSpeed = 15f;

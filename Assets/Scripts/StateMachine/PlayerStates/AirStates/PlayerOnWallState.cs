@@ -6,6 +6,11 @@ public class PlayerOnWallState : State {
 
 [SerializeField] private AnimationClip idle;
 [SerializeField] private float idleTimerMax = 1f;
+[SerializeField] private Player player;
+private Vector2 inputDir => player.inputHandler.GetInputDirection();
+[SerializeField] private float jumpSpeed = 20f;
+[SerializeField] float moveSpeed = 9f;
+[SerializeField] float wallDownSpeed = 10f;
 private float idleTimer;
 
 
@@ -13,17 +18,24 @@ private float idleTimer;
     {
         animator.Play(idle.name);
         idleTimer = idleTimerMax;
-        Debug.Log("WallState");
     }
 
     public override void Do()
     {
         if (idleTimer >= 0) {
             idleTimer -= Time.deltaTime;
-            body.velocity = new Vector2(0f, 0f);
+            if (inputDir.y == 0) {
+                body.velocity = new Vector2(0f, 0f);
+            } else if (Mathf.Abs(inputDir.x) > 0) {
+                body.velocity = new Vector2(inputDir.x * moveSpeed, inputDir.y * jumpSpeed);
+
+            }
+            
         } else {
             animator.Play(anim.name);
-            body.velocity = new Vector2(0f,body.velocity.y);
+            Vector2 wallVelocity = new Vector2(0f, body.velocity.y);
+            wallVelocity.y = Mathf.Clamp(wallVelocity.y, -wallDownSpeed, 0f);
+            body.velocity = wallVelocity;
         }
         
     }

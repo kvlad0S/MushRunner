@@ -14,7 +14,7 @@ public class PlayerGroundState : State {
     [SerializeField] private float jumpSpeed = 20f;
 
     private bool isFalling;
-    protected Vector2 inputDir => player.inputHandler.GetInputDirection();
+    private Vector2 inputDir => player.inputHandler.GetInputDirection();
 
 
     public void Start() {
