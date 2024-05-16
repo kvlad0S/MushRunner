@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class PlayerFastFallGroundState : State {
 
-    public event EventHandler OnFastFallGroundEnd;
-    [SerializeField] private float fastFallTimerMax = .1f;
-    private float fastFallTimer;
+    //public event EventHandler OnFastFallEnd;
+    //[SerializeField] float fastFallTimerMax = .1f;
+    //private float fastFallTimer;
 
     public override void Enter() {
+        //fastFallTimer = fastFallTimerMax;
         animator.Play(anim.name);
-        fastFallTimer = fastFallTimerMax;
     }
 
-    public override void Do() {
-        fastFallTimer -= Time.deltaTime;
-        if (fastFallTimer <= 0f) {
-            isComplete = true;
-            OnFastFallGroundEnd?.Invoke(this, EventArgs.Empty);
-        }
+    public override void Do(){
+        //fastFallTimer -= Time.deltaTime;
+        //if (fastFallTimer <= 0){
+          //  OnFastFallEnd?.Invoke(this, EventArgs.Empty);
+       // }
+
     }
+
 }

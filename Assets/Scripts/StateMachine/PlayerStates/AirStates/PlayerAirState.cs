@@ -9,11 +9,13 @@ public class PlayerAirState : State {
     [SerializeField] private float downSpeedScale = 1.1f;
     [SerializeField] private float upSpeedScale = 0.96f;
     [SerializeField] private float maxFallingSpeed = 15f;
+    [SerializeField] private float airFriction = .9f;
     [SerializeField] private Player player;
     [SerializeField] private State jump;
     [SerializeField] private State startFalling;
     [SerializeField] private State falling;
     [SerializeField] private State onWall;
+
     private Vector2 inputDir => player.inputHandler.GetInputDirection();
     private bool isOnWall => player.wallDetector.isOnWall;
     [SerializeField] private float fallingAnimEndSpeed = 6f;
@@ -30,7 +32,7 @@ public class PlayerAirState : State {
 
             body.velocity = new Vector2(jumpXSpeed, body.velocity.y);
         } else {
-            body.velocity = new Vector2(body.velocity.x, body.velocity.y);
+            body.velocity = new Vector2(body.velocity.x * airFriction, body.velocity.y);
         }
         if (!isOnWall) {
             if (body.velocity.y > 0) {
@@ -65,7 +67,4 @@ public class PlayerAirState : State {
         }
     }
 
-    public override void Exit() {
-
-    }
 }

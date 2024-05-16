@@ -26,8 +26,8 @@ private float idleTimer;
             idleTimer -= Time.deltaTime;
             if (inputDir.y == 0) {
                 body.velocity = new Vector2(0f, 0f);
-            } else if (Mathf.Abs(inputDir.x) > 0) {
-                body.velocity = new Vector2(inputDir.x * moveSpeed, inputDir.y * jumpSpeed);
+            //} //else if (Mathf.Abs(inputDir.x) > 0) {
+                //body.velocity = new Vector2(inputDir.x * moveSpeed, inputDir.y * jumpSpeed);
 
             }
             
@@ -37,6 +37,10 @@ private float idleTimer;
             wallVelocity.y = Mathf.Clamp(wallVelocity.y, -wallDownSpeed, 0f);
             body.velocity = wallVelocity;
         }
+        if (Mathf.Abs(inputDir.x) > 0 && inputDir.y > 0f) {
+                body.velocity = new Vector2(inputDir.x * moveSpeed, inputDir.y * jumpSpeed);
+
+            }
         
     }
 

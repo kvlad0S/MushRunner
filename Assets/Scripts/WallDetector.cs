@@ -7,6 +7,7 @@ public class WallDetector : MonoBehaviour {
     [SerializeField] private BoxCollider2D leftCollider;
     [SerializeField] private BoxCollider2D rightCollider;
     [SerializeField] LayerMask groundMask;
+    [SerializeField] private Player player;
 
     public bool isOnWall {get; private set;}
 

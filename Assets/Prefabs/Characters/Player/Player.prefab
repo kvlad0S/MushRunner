@@ -169,11 +169,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 7400000, guid: 75f671968de19304f8325d3f9fea9fdb, type: 2}
   idle: {fileID: 7400000, guid: 41cb85c6539823b2badf1648a76e79f2, type: 2}
-  idleTimerMax: 1
+  idleTimerMax: 0.3
   player: {fileID: 2387539238490224438}
   jumpSpeed: 20
   moveSpeed: 9
   wallDownSpeed: 10
+--- !u!1 &625494267858054291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625523437507121870}
+  - component: {fileID: 5101706586826639129}
+  m_Layer: 6
+  m_Name: fastFall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &625523437507121870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625494267858054291}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4997031369364580600}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5101706586826639129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625494267858054291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20158164149b9eb4c8958cebbacc5ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 7400000, guid: 92e689a682c09ba4595ced35657abfe3, type: 2}
 --- !u!1 &1492022963270619648
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,52 +332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 7400000, guid: ee45212bdac73994b95edcd81320b689, type: 2}
   fallingAnimEndSpeed: 6
---- !u!1 &2055920680425977517
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3942969983137737219}
-  - component: {fileID: 5206360876683523625}
-  m_Layer: 6
-  m_Name: FastFallGround
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3942969983137737219
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055920680425977517}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4006579205634348054}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5206360876683523625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055920680425977517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20158164149b9eb4c8958cebbacc5ac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 7400000, guid: 92e689a682c09ba4595ced35657abfe3, type: 2}
-  fastFallTimerMax: 0.1
 --- !u!1 &2596685367083841040
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +383,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  player: {fileID: 0}
 --- !u!1 &3704903895154256361
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +463,6 @@ Transform:
   - {fileID: 4997031369364580600}
   - {fileID: 7330046336150552391}
   - {fileID: 7499330381385502535}
-  - {fileID: 3942969983137737219}
   m_Father: {fileID: 8424894886102648180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7971579862546804739
@@ -482,9 +481,8 @@ MonoBehaviour:
   run: {fileID: 4325114834202849834}
   idle: {fileID: 8429994608807343013}
   fallGround: {fileID: 2016163497022211149}
-  fastFallGround: {fileID: 5206360876683523625}
   player: {fileID: 2387539238490224438}
-  jumpSpeed: 20
+  jumpSpeed: 50
 --- !u!1 &6010279002636641987
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +547,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16819191, y: -0.026045322}
+  m_Offset: {x: -0.14483023, y: -0.026045322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -560,7 +558,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.06135559, y: 1.3470869}
+  m_Size: {x: 0.10807896, y: 1.3470869}
   m_EdgeRadius: 0
 --- !u!1 &6599313535787214434
 GameObject:
@@ -608,6 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 7400000, guid: 7afff3cd517c96e4ab2fbffde7efd69f, type: 2}
   fallTimerMax: 0.3
+  player: {fileID: 2387539238490224438}
 --- !u!1 &6818732112718894925
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +993,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 625523437507121870}
   - {fileID: 9081433290036190941}
   - {fileID: 3243134496283456996}
   m_Father: {fileID: 4006579205634348054}
@@ -1013,7 +1013,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   stopState: {fileID: 6357541627875709602}
   runningState: {fileID: 1215676090256433884}
-  moveSpeed: 10
+  moveSpeed: 11
   player: {fileID: 2387539238490224438}
 --- !u!1 &8655374247419843746
 GameObject:
@@ -1124,7 +1124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2497139, y: -0.026045322}
+  m_Offset: {x: -0.1981945, y: -0.026045322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1135,7 +1135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.22439957, y: 1.3470869}
+  m_Size: {x: 0.12136078, y: 1.3470869}
   m_EdgeRadius: 0
 --- !u!1 &9020119381469850705
 GameObject:
@@ -1233,9 +1233,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   moveSpeed: 9
-  downSpeedScale: 1.1
-  upSpeedScale: 0.95
-  maxFallingSpeed: 15
+  downSpeedScale: 1.08
+  upSpeedScale: 0.93
+  maxFallingSpeed: 17
+  airFriction: 0.99
   player: {fileID: 2387539238490224438}
   jump: {fileID: 5860228237787977696}
   startFalling: {fileID: 289166716470180346}
