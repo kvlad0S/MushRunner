@@ -384,6 +384,55 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   player: {fileID: 0}
+--- !u!1 &3644712939589287229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5978390279375357969}
+  - component: {fileID: 5378847450917276267}
+  m_Layer: 6
+  m_Name: AirDash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5978390279375357969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644712939589287229}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7333516779201892242}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5378847450917276267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644712939589287229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778a779a6b664a513b95e19ee548cf57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 7400000, guid: ea7a967fdf746e9159d9f26e73b46871, type: 2}
+  dashSpeed: 40
+  dashDeceleration: 0.9
+  dashAnimationTimeScale: 20
+  player: {fileID: 2387539238490224438}
 --- !u!1 &3704903895154256361
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +512,7 @@ Transform:
   - {fileID: 4997031369364580600}
   - {fileID: 7330046336150552391}
   - {fileID: 7499330381385502535}
+  - {fileID: 3442620250474803821}
   m_Father: {fileID: 8424894886102648180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7971579862546804739
@@ -481,6 +531,7 @@ MonoBehaviour:
   run: {fileID: 4325114834202849834}
   idle: {fileID: 8429994608807343013}
   fallGround: {fileID: 2016163497022211149}
+  dash: {fileID: 6917925787521697873}
   player: {fileID: 2387539238490224438}
   jumpSpeed: 50
 --- !u!1 &6010279002636641987
@@ -869,6 +920,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6c540512-2a7a-46a5-b52b-6d33b1b3227f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7972604029727790489}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 51b3f4ba-1c25-4853-aba0-37cd0f8fc9f1
+    m_ActionName: Player/Dash[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -963,6 +1030,55 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!1 &7671087134968426977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3442620250474803821}
+  - component: {fileID: 6917925787521697873}
+  m_Layer: 6
+  m_Name: GroundDash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3442620250474803821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671087134968426977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4006579205634348054}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6917925787521697873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671087134968426977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778a779a6b664a513b95e19ee548cf57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 7400000, guid: 5d849acb2d81c0a0593a6bd386721895, type: 2}
+  dashSpeed: 50
+  dashDeceleration: 0.9
+  dashAnimationTimeScale: 20
+  player: {fileID: 2387539238490224438}
 --- !u!1 &8597361832323932137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1333,7 @@ Transform:
   - {fileID: 7233704816055260226}
   - {fileID: 2307027104196804461}
   - {fileID: 7938316029547643507}
+  - {fileID: 5978390279375357969}
   m_Father: {fileID: 8424894886102648180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &929686477072140550
@@ -1242,4 +1359,5 @@ MonoBehaviour:
   startFalling: {fileID: 289166716470180346}
   falling: {fileID: 1020869626860137086}
   onWall: {fileID: 1547943881004622917}
+  dash: {fileID: 5378847450917276267}
   fallingAnimEndSpeed: 6

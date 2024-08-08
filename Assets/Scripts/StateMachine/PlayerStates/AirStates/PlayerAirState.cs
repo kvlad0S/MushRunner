@@ -15,55 +15,72 @@ public class PlayerAirState : State {
     [SerializeField] private State startFalling;
     [SerializeField] private State falling;
     [SerializeField] private State onWall;
+    [SerializeField] private PlayerDashState dash;
+    private bool isDashing;
 
     private Vector2 inputDir => player.inputHandler.GetInputDirection();
     private bool isOnWall => player.wallDetector.isOnWall;
     [SerializeField] private float fallingAnimEndSpeed = 6f;
 
+    public void Start(){
+        player.inputHandler.OnDashed += OnDashed;
+    }
+
     public override void Enter() {
-   
+        isDashing = false;
     }
 
     public override void Do() {
         float jumpXSpeed;
-        
-        if (Mathf.Abs(inputDir.x) > 0f) {
-            jumpXSpeed = (Mathf.Abs(body.velocity.x) > Mathf.Abs(inputDir.x * moveSpeed) && body.velocity.x * inputDir.x > 0) ? body.velocity.x : inputDir.x * moveSpeed;
 
-            body.velocity = new Vector2(jumpXSpeed, body.velocity.y);
-        } else {
-            body.velocity = new Vector2(body.velocity.x * airFriction, body.velocity.y);
+        if (dash.isComplete){
+            isDashing = false;
         }
-        if (!isOnWall) {
-            if (body.velocity.y > 0) {
-                Set(jump);
-            } else if (body.velocity.y <= 0f && body.velocity.y > -fallingAnimEndSpeed) {
-                Set(startFalling);
-            } else if (body.velocity.y <= -fallingAnimEndSpeed) {
-                Set(falling);
+
+        if (!isDashing) {
+            if (Mathf.Abs(inputDir.x) > 0f) {
+                jumpXSpeed = (Mathf.Abs(body.velocity.x) > Mathf.Abs(inputDir.x * moveSpeed) && body.velocity.x * inputDir.x > 0) ? body.velocity.x : inputDir.x * moveSpeed;
+
+                body.velocity = new Vector2(jumpXSpeed, body.velocity.y);
+            } else {
+                body.velocity = new Vector2(body.velocity.x * airFriction, body.velocity.y);
             }
-        } else {
-            Set(onWall);
+            if (!isOnWall) {
+                if (body.velocity.y > 0) {
+                    Set(jump);
+                } else if (body.velocity.y <= 0f && body.velocity.y > -fallingAnimEndSpeed) {
+                    Set(startFalling);
+                } else if (body.velocity.y <= -fallingAnimEndSpeed) {
+                    Set(falling);
+                }
+            } else {
+                Set(onWall);
+            }
         }
-        
-        
-
-        
     }
 
     public override void FixedDo() {
         float jumpYSpeed;
+        if (!isDashing) {
+            if (body.velocity.y > 0) {
+                jumpYSpeed = body.velocity.y * upSpeedScale;
+                jumpYSpeed = Mathf.Clamp(jumpYSpeed, 0f, maxFallingSpeed);
+                body.velocity = new Vector2(body.velocity.x, jumpYSpeed);
+            }
 
-        if (body.velocity.y > 0) {
-            jumpYSpeed = body.velocity.y * upSpeedScale;
-            jumpYSpeed = Mathf.Clamp(jumpYSpeed, 0f, maxFallingSpeed);
-            body.velocity = new Vector2(body.velocity.x, jumpYSpeed);
+            if (body.velocity.y < 0) {
+                jumpYSpeed = body.velocity.y * downSpeedScale;
+                jumpYSpeed = Mathf.Clamp(jumpYSpeed, -maxFallingSpeed, 0f);
+                body.velocity = new Vector2(body.velocity.x, jumpYSpeed);
+            }
         }
+        
+    }
 
-        if (body.velocity.y < 0) {
-            jumpYSpeed = body.velocity.y * downSpeedScale;
-            jumpYSpeed = Mathf.Clamp(jumpYSpeed, -maxFallingSpeed, 0f);
-            body.velocity = new Vector2(body.velocity.x, jumpYSpeed);
+    private void OnDashed(object sender, System.EventArgs e) {
+        if(!isDashing){
+            isDashing = true;
+            Set(dash);
         }
     }
 
