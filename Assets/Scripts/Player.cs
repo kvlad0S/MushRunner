@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
@@ -13,6 +14,9 @@ public class Player : Core {
     [SerializeField] public InputHandler inputHandler;
 
     [SerializeField] public WallDetector wallDetector;
+
+    public bool HasDashed { get; private set; }
+    public bool IsDashing { get; private set; }
 
     Vector2 inputDir => inputHandler.GetInputDirection();
 
@@ -35,12 +39,15 @@ public class Player : Core {
     private void Start() {
         machine = new StateMachine();
         SetupInstances();
-
-
-        
         machine.Set(groundState);
 
+        inputHandler.OnDashed += OnDashed;
 
+        groundState.dash.OnDashStart += OnDashStart;
+        airState.dash.OnDashStart += OnDashStart;
+
+        groundState.dash.OnDashStop += OnDashStop;
+        airState.dash.OnDashStop += OnDashStop;
     }
 
     private void Update() {
@@ -83,6 +90,19 @@ public class Player : Core {
         } else {
             machine.Set(airState);
         }
+    }
+
+    private void OnDashed(object sender, EventArgs e) {
+        HasDashed = true;
+    }
+
+    private void OnDashStop(object sender, EventArgs e) {
+        HasDashed = false;
+        IsDashing = false;
+    }
+
+    private void OnDashStart(object sender, EventArgs e) {
+        IsDashing = true;
     }
 }
 

@@ -15,29 +15,18 @@ public class PlayerAirState : State {
     [SerializeField] private State startFalling;
     [SerializeField] private State falling;
     [SerializeField] private State onWall;
-    [SerializeField] private PlayerDashState dash;
-    private bool isDashing;
+    [SerializeField] public PlayerDashState dash;
 
     private Vector2 inputDir => player.inputHandler.GetInputDirection();
     private bool isOnWall => player.wallDetector.isOnWall;
     [SerializeField] private float fallingAnimEndSpeed = 6f;
 
-    public void Start(){
-        player.inputHandler.OnDashed += OnDashed;
-    }
-
-    public override void Enter() {
-        isDashing = false;
-    }
 
     public override void Do() {
         float jumpXSpeed;
 
-        if (dash.isComplete){
-            isDashing = false;
-        }
 
-        if (!isDashing) {
+        if (!player.HasDashed) {
             if (Mathf.Abs(inputDir.x) > 0f) {
                 jumpXSpeed = (Mathf.Abs(body.velocity.x) > Mathf.Abs(inputDir.x * moveSpeed) && body.velocity.x * inputDir.x > 0) ? body.velocity.x : inputDir.x * moveSpeed;
 
@@ -56,12 +45,14 @@ public class PlayerAirState : State {
             } else {
                 Set(onWall);
             }
+        } else {
+            Set(dash);
         }
     }
 
     public override void FixedDo() {
         float jumpYSpeed;
-        if (!isDashing) {
+        if (!player.HasDashed) {
             if (body.velocity.y > 0) {
                 jumpYSpeed = body.velocity.y * upSpeedScale;
                 jumpYSpeed = Mathf.Clamp(jumpYSpeed, 0f, maxFallingSpeed);
@@ -77,11 +68,5 @@ public class PlayerAirState : State {
         
     }
 
-    private void OnDashed(object sender, System.EventArgs e) {
-        if(!isDashing){
-            isDashing = true;
-            Set(dash);
-        }
-    }
 
 }

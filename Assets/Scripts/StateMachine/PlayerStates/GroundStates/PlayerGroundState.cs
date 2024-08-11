@@ -9,18 +9,16 @@ public class PlayerGroundState : State {
     [SerializeField] private PlayerRunState run;
     [SerializeField] private State idle;
     [SerializeField] private PlayerFallGroundState fallGround;
-    [SerializeField] private PlayerDashState dash;
+    [SerializeField] public PlayerDashState dash;
     [SerializeField] private Player player;
     [SerializeField] private float jumpSpeed = 20f;
 
     private bool isFalling;
-    private bool isDashing;
     private Vector2 inputDir => player.inputHandler.GetInputDirection();
 
 
     public void Start() {
         fallGround.OnFallGroundEnd += OnFallGroundEnd;
-        player.inputHandler.OnDashed += OnDashed;
     }
 
     
@@ -31,18 +29,16 @@ public class PlayerGroundState : State {
             Set(fallGround, true);
             isFalling = true;
         }
-        isDashing = false;
     }
 
     public override void Do() {
         if (dash.isComplete) {
-            isDashing = false;
             isFalling = false;
         }
         if (fallGround.isComplete){
             isFalling = false;
         }
-        if (isGrounded && !isFalling && !isDashing) {
+        if (isGrounded && !isFalling && !player.HasDashed) {
             if (Mathf.Abs(inputDir.x) == 0 && Mathf.Abs(body.velocity.x) == 0) {
                 Set(idle, true);
             } else if (Mathf.Abs(inputDir.x) > 0 || Mathf.Abs(body.velocity.x) > 0) {
@@ -51,8 +47,8 @@ public class PlayerGroundState : State {
             if (inputDir.y > 0) {
                 body.velocity = new Vector2(body.velocity.x, inputDir.y * jumpSpeed);
             } 
-        } else {
-            isComplete = true;
+        } else if (player.HasDashed) {
+            Set(dash);
         }
     }
 
@@ -60,10 +56,4 @@ public class PlayerGroundState : State {
         isFalling = false;
     }
 
-    private void OnDashed(object sender, System.EventArgs e) {
-        if(!isDashing && isGrounded){
-            isDashing = true;
-            Set(dash, true);
-        }
-    }
 }
